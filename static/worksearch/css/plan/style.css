@@ -1,0 +1,120 @@
+    #title {
+    color: white;
+    text-shadow: 1px 2px #000000;
+    margin-top: 120px;
+    }
+
+    #addf {
+    color: white;
+    text-shadow: 1px 2px #000000;
+    }
+    #dropcon {
+        color: white;
+        top: 3%;
+        width: 30%;
+    }
+    #homepage{
+        position: absolute;
+        top: 30px;
+        margin-left: 30%;
+        color: rgba(232, 232, 232);
+        text-shadow: 1px 2px #000000;
+        color: white;
+        text-decoration: none;
+        margin-bottom: 15px;
+        font-size: 20px;
+        width: 2%;
+    }
+     #homepage:hover {
+       text-shadow: -1px -1px 2px #000000;
+    }
+    #btauth {
+        text-shadow: 1px 2px #000000;
+        font-size: 20px;
+        margin-left: 35%;
+        cursor: pointer;
+        top: 28px;
+        width: 2%;
+    }
+    #btauth:after {
+        color: #009CEF;
+	    content: '';
+        position: absolute;
+        right: 30%;
+        top: -5px;
+        display: inline-block;
+        height: 2em;
+        width: 40%;
+        border-top: 1px solid;
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+        margin-top: 0px;
+        transform-origin:0% 100%;
+        opacity: 0;
+            -webkit-transition: opacity 0.35s,
+            -webkit-transform 0.85s;
+            transition: opacity 0.35s, transform 0.45s;
+            -webkit-transform: scale(0,1);
+            transform: scale(1,1,1);
+    }
+    #btauth:hover:after {
+      opacity: 1;
+        -webkit-transform: scale(1,0);
+        transform: scale(1,1);
+    }
+
+    #btauth3 {
+        color: white;
+        text-decoration: None;
+        text-shadow: 1px 2px #000000;
+        font-size: 20px;
+        cursor: pointer;
+        top: 5px;
+        right: 55px;
+        width: 2%;
+    }
+
+    #btauth3:after {
+        color: #009CEF;
+	    content: '';
+        position: absolute;
+        right: 38%;
+        top: -5px;
+        display: inline-block;
+        height: 2em;
+        width: 40%;
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        margin-top: 0px;
+        transform-origin:100% 0%;
+        opacity: 0;
+            -webkit-transition: opacity 0.35s,
+            -webkit-transform 0.85s;
+            transition: opacity 0.35s, transform 0.45s;
+            -webkit-transform: scale(0,1);
+            transform: scale(1,1,1);
+    }
+    #btauth3:hover:after {
+      opacity: 1;
+        -webkit-transform: scale(1,0);
+        transform: scale(1,1);
+    }
+
+
+    #weretag {
+        position: absolute;
+
+        top: 41%;
+        right: 44%;
+    }
+    #cityform {
+        position: relative;
+        width: 50%;
+        left: 50%;
+    }
+    #companyform {
+        position: absolute;
+        width: 33%;
+        position: left;
+    }

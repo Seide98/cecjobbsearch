@@ -1,0 +1,273 @@
+    .titles {
+    color: white;
+    text-shadow: 1px 1px #000000;
+    }
+
+    .adds {
+    color: white;
+    text-shadow: 1px 1px #000000;
+    }
+
+    #websearchtitle {
+        color: white;
+        position: absolute;
+        text-shadow: 1px 2px #000000;
+        margin-top: -50px;
+    }
+    .formcon {
+        position: absolute;
+        width:90%;
+
+    }
+    #arrowleft {
+        position: absolute;
+        float: right;
+        left: 33%;
+        width: 300px;
+        margin-top: 12%;
+    }
+    #arrow{
+        position: absolute;
+        left: -15%;
+        font-size: 50px;
+    }
+    #arrowup {
+        position: absolute;
+        float: right;
+        left: 45%;
+        margin-top: 6%;
+        width: 25%;
+    }
+    #uparrow {
+       position: absolute;
+        left: 60%;
+        top: -15%;
+        font-size: 50px;
+
+    }
+    #howto {
+        position: absolute;
+        left: 68%;
+        margin-top: 6%;
+        width: 25%;
+
+    }
+    #uphere {
+       position: absolute;
+        left: 60%;
+       top: -15%;
+        font-size: 50px;
+
+    }
+    #start{
+        color: green;
+        text-shadow: 1px 1px #000000;
+    }
+
+    #arrowleftedit {
+        position: absolute;
+        float: right;
+        left: 33%;
+        margin-top: 26%;
+        width: 350px;
+
+    }
+    #arrow2{
+        position: absolute;
+        left: -15%;
+        top: -10px;
+        font-size: 50px;
+
+    }
+
+    #starthere2 {
+        padding-top: 8px;
+        padding-bottom: 5px;
+        position: absolute;
+        top: 13.5%;
+        left: 130px;
+        width: 21%;
+        height:300px;
+        border-color: red;
+    }
+    #starthere {
+        padding-top: 8px;
+        padding-bottom: 5px;
+        position: absolute;
+        margin-left: 7%;
+        margin-top: 6%;
+        border: 2px solid;
+        width: 20%;
+        height:300px;
+        border-color: red;
+    }
+    #websearch{
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 25%;
+    }
+    #links_title {
+        margin-bottom: 10px;
+        width:30%;
+    }
+    #cardtitle {
+        color: black;
+        font-size: 20px;
+    }
+    #cardlink {
+        color: gray;
+        font-size: 15px;
+
+    }
+    #trash {
+        position: absolute;
+        top: 3px;
+        right: 5px;
+    }
+    #edit {
+        position: absolute;
+        top: 3px;
+        right: 35px;
+    }
+    #dropcon {
+        color: white;
+        position: absolute;
+        top: 3%;
+        width: 30%;
+    }
+    #homepage{
+        position: absolute;
+        top: 30px;
+        margin-left: 30%;
+        color: rgba(232, 232, 232);
+        text-shadow: 1px 2px #000000;
+        color: white;
+        width: 2%;
+        text-decoration: none;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    #homepage:hover {
+       text-shadow: -1px -1px 2px #000000;
+    }
+    #btauth {
+        text-shadow: 1px 2px #000000;
+        font-size: 20px;
+        margin-left: 35%;
+        cursor: pointer;
+        top: 28px;
+        width: 2%;
+    }
+    #btauth:after {
+        color: #009CEF;
+	    content: '';
+        position: absolute;
+        right: 30%;
+        top: -5px;
+        display: inline-block;
+        height: 2em;
+        width: 40%;
+        border-top: 1px solid;
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+        margin-top: 0px;
+        transform-origin:0% 100%;
+        opacity: 0;
+            -webkit-transition: opacity 0.35s,
+            -webkit-transform 0.85s;
+            transition: opacity 0.35s, transform 0.45s;
+            -webkit-transform: scale(0,1);
+            transform: scale(1,1,1);
+    }
+    #btauth:hover:after {
+      opacity: 1;
+        -webkit-transform: scale(1,0);
+        transform: scale(1,1);
+    }
+
+    #btauth3 {
+        color: white;
+        text-decoration: None;
+        text-shadow: 1px 2px #000000;
+        font-size: 20px;
+        cursor: pointer;
+        top: 5px;
+        right: 55px;
+        width: 2%;
+    }
+
+    #btauth3:after {
+        color: #009CEF;
+	    content: '';
+        position: absolute;
+        right: 38%;
+        top: -5px;
+        display: inline-block;
+        height: 2em;
+        width: 40%;
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        margin-top: 0px;
+        transform-origin:100% 0%;
+        opacity: 0;
+            -webkit-transition: opacity 0.35s,
+            -webkit-transform 0.85s;
+            transition: opacity 0.35s, transform 0.45s;
+            -webkit-transform: scale(0,1);
+            transform: scale(1,1,1);
+    }
+    #btauth3:hover:after {
+      opacity: 1;
+        -webkit-transform: scale(1,0);
+        transform: scale(1,1);
+    }
+
+    #editnamecon {
+        position: absolute;
+        left: 40%;
+        margin-top: 7%;
+    }
+
+    .editname {
+        color: white;
+        text-shadow: 1px 2px #000000;
+        font-size: 23px;
+        margin-bottom: 12px;
+    }
+
+    .nameinput {
+        width: 250px;
+        border-radius: 5px;
+        border: 0px solid;
+        height: 30px;
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+
+    #editnamesave {
+        position: absolute;
+        top: 180px;
+        left: 15px;
+    }
+
+    #addfilecon {
+        color: white;
+        position: absolute;
+        margin-top: 7%;
+        left: 62%;
+    }
+    .custom-file-label {
+        width: 30%;
+    }
+
+    #doc {
+        text-shadow: 1px 2px #000000;
+        margin-bottom: 3px;
+        font-size: 20px;
+        font-
+    }
+    #maxsize {
+        font-size: 15px;
+    }
+

@@ -1,0 +1,262 @@
+    h2 {
+        text-shadow: 1px 2px #000000;
+    }
+    #chart {
+        padding-left: 50%;
+    }
+    #statslbl {
+        padding-left: 75%;
+        width: 100%;
+        color: white;
+    }
+    body {
+        font-family: 'Lato', sans-serif;
+    }
+    .overlay {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 93;
+        left: 0;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.9);
+        overflow-x: hidden;
+        transition: 0.9s;
+    }
+    .overlay-content {
+        position: relative;
+        top:0%;
+        width: 1000px;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .overlay a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #818181;
+        display: block;
+        transition: 0.6s;
+    }
+    .overlay a:hover, .overlay a:focus {
+        color: #f1f1f1;
+    }
+    .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px;
+    }
+    @media screen and (max-height: 450px) {
+        .overlay a {font-size: 20px}
+        .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;}
+    }
+    .card {
+        width: 100%;
+        overflow: auto;
+    }
+    #cardcon {
+        margin-top: 6%;
+        width: 70%;
+        margin-left:375px;
+        padding-right: 180px;
+    }
+    #dropcon {
+        color: white;
+        justify-content: center;
+        top: 3%;
+        left: 10%;
+        width: 50%;
+    }
+    #btauth {
+        text-shadow: 1px 2px #000000;
+        font-size: 20px;
+        margin-left: 35%;
+        cursor: pointer;
+        top: 28px;
+        width: 5%;
+    }
+    #btauth:after {
+        color: #009CEF;
+        position: absolute;
+        right: 30%;
+        top: -5px;
+        display: inline-block;
+        height: 2em;
+        width: 40%;
+        border-top: 1px solid;
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+        margin-top: 0px;
+        transform-origin:0% 100%;
+        opacity: 0;
+            -webkit-transition: opacity 0.35s,
+            -webkit-transform 0.85s;
+            transition: opacity 0.35s, transform 0.45s;
+            -webkit-transform: scale(0,1);
+            transform: scale(1,1,1);
+    }
+    #btauth:hover:after {
+        opacity: 1;
+        -webkit-transform: scale(1,0);
+        transform: scale(1,1);
+    }
+    #btauth3 {
+        text-shadow: 1px 2px #000000;
+        font-size: 20px;
+        cursor: pointer;
+        top: 28px;
+        width: 5%;
+    }
+    #btauth3:after {
+        position: absolute;
+        right: 42%;
+        color: #009CEF;
+        display: inline-block;
+        height: 2em;
+        width: 60%;
+        top: -5px;
+        border-bottom:1px solid;
+        border-top: 1px solid;
+        transform-origin: center;
+        opacity: 0;
+            -webkit-transition: opacity 0.35s,
+            -webkit-transform 0.85s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: scale(0,1);
+            transform: scale(0,1);
+    }
+    #btauth3:hover:after {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    #showstats {
+        color: white;
+        position: absolute;
+        text-decoration: None;
+        background-color: rgba(0,0,0, 0.0);
+        text-shadow: 1px 2px #000000;
+        font-size: 20px;
+        border: 0px;
+        cursor: pointer;
+        right: 220px;
+        top: 5px;
+        width: 50%;
+        right:px;
+    }
+    #showstats:after {
+        color: #009CEF;
+	    content: '';
+        position: absolute;
+        right: 10%;
+        top: -5px;
+        display: inline-block;
+        height: 2em;
+        width: 80%;
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        margin-top: 0px;
+        transform-origin:100% 0%;
+        opacity: 0;
+            -webkit-transition: opacity 0.35s,
+            -webkit-transform 0.85s;
+            transition: opacity 0.35s, transform 0.45s;
+            -webkit-transform: scale(0,1);
+            transform: scale(1,1,1);
+    }
+    #showstats:hover:after {
+        opacity: 1;
+        -webkit-transform: scale(1,0);
+        transform: scale(1,1);
+    }
+    #appicon{
+        size: 5px;
+    }
+    #choicetext{
+        font-size: 12px;
+        font-style: italic;
+        color: gray;
+    }
+    #deleteicon {
+        position: absolute;
+        right: 10px;
+        top: 12px;
+    }
+    #editicon {
+        position: absolute;
+        right: 40px;
+        top: 12px;
+    }
+    #choicetodotext{
+        font-size: 12px;
+        font-style: italic;
+        color: gray;
+    }
+    #deletetodoicon {
+        position: absolute;
+        right: 10px;
+        top: 12px;
+    }
+    #edittodoicon {
+        position: absolute;
+        right: 40px;
+        top: 12px;
+    }
+    #donetodo {
+        position: absolute;
+        right: 80px;
+        top: 13px;
+
+    }
+    #freetextfield{
+        font-size: 15px;
+    }
+
+    #nolinksbtn {
+        color: white;
+        position: relative;
+        margin-left: 40px;
+        bottom: -12px;
+        text-decoration: none;
+        text-shadow: 1px 1px #000000;
+        text-transform: uppercase;
+    }
+    #nolinks {
+        position: absolute;
+        right: 17%;
+        width: 110%;
+        border: 1px solid;
+        border-color: red;
+        height:50px;
+        bottom: 5px;
+    }
+    #warningicon {
+        position: absolute;
+        left: 20px;
+        bottom: 10px;
+    }
+
+    #citytagadd {
+        position: absolute;
+        right: 30%;
+        top: 15px;
+        font-size: 17px;
+    }
+
+    #citytagplan {
+        position: absolute;
+        right: 30%;
+        top: 15px;
+        font-size: 17px;
+    }
+
+    #CVcc {
+        position: absolute;
+        margin-top: 20px;
+    }

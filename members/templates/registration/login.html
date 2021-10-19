@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #logintxt {
+        color: white;
+        text-shadow: 1px 2px #000000;
+        }
+</style>
+{% extends "homepage\base.html" %}
+</head>
+<body>
+{% block content %}
+    <div class="d-flex justify-content-center">
+        <form id="logintxt" method='POST'>
+            {% csrf_token %}
+              <h1 class="mb-5">Login user</h1>
+            {{ form.as_p }}
+              <button class="btn btn-success">Login</button>
+        </form>
+    </div>
+{% endblock %}
+</body>
+</html>

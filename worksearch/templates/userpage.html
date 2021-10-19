@@ -1,0 +1,246 @@
+<html lang="en">
+<head>
+    <title>Userpage</title>
+</head>
+{% extends "homepage\base.html" %}
+{% load rest_framework % }
+<body>
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'worksearch/css/userpage/style_up.css' %}">
+<div id="dropcon" class="container fixed-top">
+    <div class="row">
+        <div class="col">
+            <div id="2" class="dropdown">
+                <p id="btauth" class="dropdown-toggle mt-1"
+                   data-toggle="dropdown">
+                    Activites
+                    <i class="fas fa-angle-down"></i></p>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'addworkpost' %}">Add activity</a>
+                    <a class="dropdown-item" href="{% url 'planned_work' %}">Planned acitvity</a>
+                    <a class="dropdown-item" href="{% url 'user_settings' %}">Show applied</a>
+                    <a class="dropdown-item" href="{% url 'createCV' %}">TO CV</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            {% for links in listset|slice:":1" %}
+            <div id="3" class="dropdown">
+                <p id="btauth3" class="dropdown-toggle mt-1"
+                   data-toggle="dropdown">
+                    Search for work
+                    <i class="fas fa-angle-down"></i>
+                </p>
+                <div class="dropdown-menu">
+                    {% for links in PostUserSett %}
+                    {% if links.user == user %}
+                    <a class="dropdown-item" href="{{ links.link }}">{{ links.title }}</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% empty %}
+            <div id="nolinks" class="container">
+                <i id="warningicon" class="fas fa-exclamation-triangle fa-2x"></i>
+                <a id="nolinksbtn" href="{% url 'user_settings' %}">Press here to get started</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col">
+            <button id="showstats" onclick="openNav()">Show Stats</button>
+        </div>
+    </div>
+</div>
+<div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+        <h3 id="statslbl" class="text-nowrap">Number off work search activites per month</h3>
+        <div id="chart" class="float position-absolute mt-5">
+            <canvas id="myChart" width="1000" height="600"></canvas>
+        </div>
+    </div>
+</div>
+
+<div id="cardcon" class="container-fluid position-relative">
+    <div class="row">
+        <div class="col">
+            <ul>
+                {% for post in Post %}
+                {% if post.user == user %}
+                {% ifchanged %}
+                <h2 class="mb-4" style="color: white;">Work search activites:</h2>
+                {% endifchanged %}
+                <div id="appcard" class="card shadow mb-3 bg-body rounded">
+                    <div class="card-header">
+                        <div>Added activity on {{ post.date_added }}</div>
+                        <div id="citytagadd">{{ post.city }}</div>
+                        <div id="choicetext">Type of activity: {{ post.choises_activity }}</div>
+                        <a id="deleteicon" href="{% url 'delete_work' post.pk %}"><i
+                                class="btn fas fa-trash-alt"></i></a>
+                        <a id="editicon" href="{% url 'update_done' post.pk%}"><i class="btn far fa-edit"></i></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">{{ post.title }} on {{ post.company }}</h5>
+                        {% if post.free_text_field == "" %}
+                        <a href="{{ post.link }}" class="btn btn-outline-info">Link to application</a>
+                        {% else %}
+                        <div id="freetextfield" class="card-title mb-3">{{ post.free_text_field}}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col">
+            <ul>
+                {% for x in PostPlan %}
+                {% if x.user == user %}
+                {% ifchanged %}
+                <h2 class="mb-4" style="color: white;">To do:</h2>
+                {% for b in lastday %}
+                {% if x == b %}
+                {% endif %}
+                {% endfor %}
+                {% endifchanged %}
+
+                {% if x.last_app_date|date:"F jS Y" >= now|date:"F jS Y"%}
+                <div class="card shadow mb-3 bg-body rounded">
+                    <div class="card-header">
+                        Last day for the activity: {{ x.last_app_date }}
+                        <div id="citytagplan">{{ x.city }}</div>
+                        <div id="choicetodotext">Type of activity: {{ x.choises_activity }}</div>
+                        <a id="deletetodoicon" href="{% url 'delete_planned' x.pk %}"><i
+                                class="btn fas fa-trash-alt"></i></a>
+                        <a id="edittodoicon" href="{% url 'update_planned' x.pk%}"><i class="btn far fa-edit"></i></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">{{ x.title }} on {{ x.company }}</h5>
+                        {% if x.free_text_field == "" %}
+                        <a href="{{ x.link }}" class="btn btn-outline-info me-4">Link to application</a>
+                        <a href="#" class="btn btn-outline-info">Applied</a>
+                        {% else %}
+                        <a id="donetodo" href=""><i class="btn far fa-check-square"></i></a>
+                        <div id="todotextfield" class="card-title mb-3">{{ x.free_text_field}}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+{% block jquery %}
+var endpoint = 'data'
+var defaultData = [];
+var defaultData2 = [];
+var defaultData3 = [];
+var defaultData4 = [];
+var labels = [];
+
+$.ajax({
+    methor: "GET",
+    url: endpoint,
+    success: function(data){
+        labels = data.labels
+        defaultData = data.default
+        defaultData2 = data.default2
+        defaultData3 = data.default3
+        defaultData4 = data.default4
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                        label: 'Total number of activites',
+                        data: defaultData,
+                        backgroundColor: 'transparent',
+                        borderColor: 'white',
+                        borderWidth: 2
+                    },{
+                        label: 'Number of applications',
+                        data: defaultData2,
+                        backgroundColor: 'transparent',
+                        borderColor: 'orange',
+                        borderWidth: 2
+                    },{
+                        label: 'Number of Registration of interests',
+                        data: defaultData3,
+                        backgroundColor: 'transparent',
+                        borderColor: 'green',
+                        borderWidth: 2
+                    },{
+                        label: 'Number of other work search activites',
+                        data: defaultData4,
+                        backgroundColor: 'transparent',
+                        borderColor: 'blue',
+                        borderWidth: 2
+                    }],
+            },
+            options: {
+                plugins: {
+                  datalabels: {
+                    color: '#36A2EB'
+                  }
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                    }
+                },
+
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            color: 'gray'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            padding: 10,
+                            fontColor: "white", // this here
+                            fontSize: 14,
+                            max: 10
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontSize: 14,
+                            fontColor: "white", // this here
+                        }
+                    }]
+                },
+            },
+
+        })
+    }
+})
+{% endblock %}
+
+</script>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+
+<!--Stats charten-->
+Chart.Legend.prototype.afterFit = function() {
+    this.height = this.height + 50;
+};
+
+
+</script>
+{% endblock %}
+
+</body>
+</html>

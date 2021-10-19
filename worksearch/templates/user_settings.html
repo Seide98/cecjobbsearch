@@ -1,0 +1,149 @@
+<html lang="en">
+<head>
+<title>User settings</title>
+{% extends "homepage\base.html" %}
+
+</head>
+<body>
+
+{% block content %}
+{% load static %}
+
+<link type="text/css" rel="stylesheet" href="{% static 'worksearch/css/user_settings/style.css' %}" >
+<a id="homepage" class="fixed-top" href="{% url 'worksearch' %}">Homepage</a>
+<div id="dropcon" class="container fixed-top">
+    <div class="row">
+        <div class="col">
+            <div id="2" class="dropdown">
+               <p id="btauth" class="dropdown-toggle mt-1"
+                        data-toggle="dropdown">
+                    Applications
+                <i class="fas fa-angle-down"></i></p>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'addworkpost' %}">Applied</a>
+                    <a class="dropdown-item" href="{% url 'planned_work' %}">Going to apply to</a>
+                    <a class="dropdown-item" href="#">Show applied</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            {% for links in listset|slice:":1" %}
+            <div id="3" class="dropdown">
+                <p id="btauth3" class="dropdown-toggle mt-1"
+                   data-toggle="dropdown">
+                    Search for work
+                    <i class="fas fa-angle-down"></i>
+                </p>
+                <div class="dropdown-menu">
+                    {% for links in PostUserSett %}
+                        {% if links.user == user %}
+                            <a class="dropdown-item" href="{{ links.link }}">{{ links.title }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!--<div id="editnamecon" class="container">-->
+<!--    <h5 class="editname">Edit first name</h5>-->
+<!--    {% if user.first_name != ""  %}-->
+<!--    <input id="forname" class="nameinput" placeholder="{{ user.first_name }}">-->
+<!--    {% else %}-->
+<!--    <input id="fornameplace" class="nameinput" placeholder="Empty">-->
+<!--    {% endif %}-->
+<!--    <h5 class="editname">Edit your last name</h5>-->
+<!--    {% if user.last_name != ""  %}-->
+<!--    <input id="lastname" class="nameinput" placeholder="{{ user.last_name }}">-->
+<!--    {% else %}-->
+<!--    <input id="lastnameplace" class="nameinput" placeholder="Empty">-->
+<!--    {% endif %}-->
+<!--    <button id="editnamesave" class="btn btn-success">Save</button>-->
+<!--</div>-->
+
+<!--<div class="container" id="addfilecon">-->
+<!--    <h5 class="addfile">Upload the documents <br>you use for jobsearch <br><div id="maxsize">(Max size 5MB)</div></h5>-->
+<!--    <form id="upploadfiles" method="POST" enctype="multipart/form-data">-->
+<!--        {% csrf_token %}-->
+
+<!--    </form>-->
+<!--        {% for files in PostUserUpload %}-->
+<!--        <a href="{{ files.document }}" class="documents" id="doc">{{ files.document }}</a><p>BTN</p>-->
+<!--        {% endfor %}-->
+<!--</div>-->
+
+{% for items in listset %}
+<div class="starthere container" id="starthere2">
+<div id="formcon2" class="formcon container">
+    <h5 id="titles2" class="titles">Add the site were you would like to search for work</h5>
+    <div class="form-group ">
+        <form id="adds2" class="adds" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success">Save</button>
+        </form>
+    </div>
+</div>
+</div>
+{% empty %}
+<div class="starthere container" id="starthere">
+<div id="formcon" class="formcon container">
+    <h5 id="titles" class="titles">Add the site were you would like to search for work</h5>
+    <div class="form-group ">
+        <form id="adds" class="adds" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success">Save</button>
+        </form>
+    </div>
+</div>
+</div>
+<div class="container" id="arrowleft">
+    <i class="fas fa-long-arrow-alt-left" id="arrow"></i>
+    <h4 id="start">Start here by adding<br> the sites you wanna use</h4>
+
+</div>
+<div class="container" id="arrowup">
+    <i class="fas fa-level-up-alt" id="uparrow"></i>
+    <h4>The links will appear up<br> here for easy access</h4>
+</div>
+<div class="container" id="arrowleftedit">
+    <i class="fas fa-long-arrow-alt-left" id="arrow2"></i>
+    <h4>You can edit your links here</h4>
+</div>
+<div class="container" id="howto">
+    <i class="fas fa-level-up-alt" id="uphere"></i>
+    <h4>Press here on any page<br> to access user settings</h4>
+</div>
+{% endfor %}
+
+<div id="websearch" class="container">
+<h2 id="websearchtitle">These are your added links</h2>
+{% for x in listset %}
+       <div id="links_title" class="shadow bg-body rounded">
+           <div class="card">
+                <h5 id="cardtitle" class="card-header">{{ x.title }}</h5>
+               <div class="card-body">
+                <h5 id="cardlink" class="card-text"> {{ x.link }}</h5>
+                <a href="{% url 'delete_links' x.pk%}" id="trash"><i class="btn fas fa-trash-alt"></i></a>
+                <a href="" id="edit"><i class="btn far fa-edit"></i></a>
+              </div>
+          </div>
+       </div>
+</div>
+{% endfor %}
+
+
+
+<script>
+    document.getElementById("uploadBtn").onchange = function () {
+    document.getElementById("uploadFile").value = this.value;
+};
+</script>
+{% endblock %}
+
+</body>
+</html>

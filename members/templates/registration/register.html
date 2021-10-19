@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #regitext {
+        color: white;
+        text-shadow: 1px 2px #000000;
+        }
+    </style>
+</head>
+{% extends "homepage\base.html" %}
+<body>
+{% block content %}
+<div class="d-flex justify-content-center">
+        <form id="regitext" method='POST'>
+            {% csrf_token %}
+            <h1 class="mt-2 mb-5">Register user</h1>
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+</div>
+{% endblock %}
+</body>
+</html>

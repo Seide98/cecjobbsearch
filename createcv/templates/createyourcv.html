@@ -1,0 +1,63 @@
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% extends "homepage\base.html" %}
+{% block content %}
+{% load static %}
+<script src="https://kit.fontawesome.com/2ee9e58eb3.js" crossorigin="anonymous"></script>
+<style>
+    .comingsoon {
+        position: absolute;
+        top: 20%;
+        left: 40%;
+        font-size: 48px;
+    }
+</style>
+<link type="text/css" rel="stylesheet" href="{% static 'createcv/css/createcv/style.css' %}" >
+<a id="homepage" class="fixed-top" href="{% url 'worksearch' %}">Homepage</a>
+<div id="dropcon" class="container fixed-top">
+    <div class="row">
+        <div class="col">
+            <div id="2" class="dropdown">
+               <p id="btauth" class="dropdown-toggle mt-1"
+                        data-toggle="dropdown">
+                    Applications
+                <i class="fas fa-angle-down"></i></p>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'addworkpost' %}">Applied</a>
+                    <a class="dropdown-item" href="{% url 'planned_work' %}">Going to apply to</a>
+                    <a class="dropdown-item" href="#">Show applied</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            {% for links in listset|slice:":1" %}
+            <div id="3" class="dropdown">
+                <p id="btauth3" class="dropdown-toggle mt-1"
+                   data-toggle="dropdown">
+                    Search for work
+                    <i class="fas fa-angle-down"></i>
+                </p>
+                <div class="dropdown-menu">
+                    {% for links in PostUserSett %}
+                        {% if links.user == user %}
+                            <a class="dropdown-item" href="{{ links.link }}">{{ links.title }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<h1 class="comingsoon">COMING SOON</h1>
+
+</body>
+
+{% endblock %}
+</html>

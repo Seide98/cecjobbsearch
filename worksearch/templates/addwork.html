@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+<title>Add Work</title>
+{% extends "homepage\base.html" %}
+</head>
+{% block content %}
+<style>
+    #whatacttag{
+
+       margin-bottom: 10px;
+       margin-top: 40px;
+    }
+    #titletag {
+
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    #orgtag {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    #linktag {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    #checktag {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    #freetxttag {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    #freetextgroup {
+        margin-bottom: 20px;
+        display: None;
+    }
+
+
+
+</style>
+<script>
+    function showHidearea() {
+        if (document.getElementById('free_text').checked) {
+            document.getElementById('freetextgroup').style.display="block";
+        } else {
+            document.getElementById('freetextgroup').style.display="none";
+        }
+    }
+</script>
+<body>
+{% load static %}
+<link rel="stylesheet" href="{% static 'worksearch/css/addw/style.css' %}" >
+<a id="homepageaddw" class="fixed-top" href="{% url 'worksearch' %}">Homepage</a>
+<div id="dropcon" class="container fixed-top">
+    <div class="row">
+        <div class="col">
+            <div id="2" class="dropdown">
+               <p id="btauth" class="dropdown-toggle mt-1"
+                        data-toggle="dropdown">
+                    Activites
+                <i class="fas fa-angle-down"></i></p>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'addworkpost' %}">Add activity</a>
+                    <a class="dropdown-item" href="{% url 'planned_work' %}">Going to apply to</a>
+                    <a class="dropdown-item" href="{% url 'user_settings' %}">Show applied</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div id="3" class="dropdown">
+                <p id="btauth3" class="dropdown-toggle mt-1"
+                        data-toggle="dropdown">
+                    Search for work
+               <i class="fas fa-angle-down"></i></p>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="https://arbetsformedlingen.se/platsbanken/">Platsbanken</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/">LinkedIn</a>
+                    <a class="dropdown-item" href="https://jobb.blocket.se/">Blocket Jobb</a>
+                    <a class="dropdown-item" href="https://www.monster.se/">Monster</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h1 id="title">Save worksearch activity</h1>
+    <div class="form-group">
+        <form id="addf" method="POST">
+            {% csrf_token %}
+            <h4 class="titletag" id="whatacttag">What type of activity?</h4>
+            {{ form.choises_activity }}
+            <h4 class="titletag" id="titletag">Title of the position</h4>
+            {{ form.title }}
+            <h4 class="titletag" id="orgtag">Name of the organisation</h4>
+            <div id="companyform">{{ form.company }}</div>
+            <h4 class="titletag" id="weretag">What City?</h4>
+            <div id="cityform">{{ form.city }}</div>
+            <h4 class="titletag" id="linktag">Link to the application</h4>
+            {{ form.link }}
+            <h4 class="titletag" id="checktag">Add free text
+            <input type="checkbox" id="free_text" name="add_freetxt" value="yes" onclick="showHidearea()">
+            </h4>
+            <div id="freetextgroup">
+            <h4 class="titletag" id="freetxttag">Add the worksearch event</h4>
+            <div id="fftf">{{ form.free_text_field }}</div>
+            </div>
+            <button class="btn btn-success">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
